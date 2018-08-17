@@ -40,11 +40,11 @@ public class ImagesRecyclerAdapter extends RecyclerView.Adapter<ImagesRecyclerVi
     @Override
     public void onBindViewHolder(@NonNull ImagesRecyclerViewHolder holder, int position) {
         holder.itemView.getLayoutParams().width = Utilities.getScreenWidth(activity)/3;
-        Picasso.get().load(mDataSet.get(position)).into(holder.imageView);
+        Picasso.get().load(mDataSet.get(position % mDataSet.size())).into(holder.imageView);
     }
 
     @Override
     public int getItemCount() {
-        return mDataSet.size();
+        return Integer.MAX_VALUE;
     }
 }

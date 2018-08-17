@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.VideoView;
 
@@ -22,17 +23,19 @@ import com.carousel.imagecarousel.adapters.ImagesRecyclerAdapter;
  * and start buffering.
  */
 
-public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInfoListener {
+public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInfoListener, View.OnClickListener {
 
     private VideoView videoView;
 
     private RecyclerView recyclerView;
 
+    private LinearLayout prevImageLL;
+
+    private LinearLayout nextImageLL;
+
     private ProgressBar progressBar;
 
     private MainPresenter mainPresenter;
-
-    private ImagesRecyclerAdapter imagesRecyclerAdapter;
 
     private LinearLayoutManager linearLayoutManager;
 
@@ -56,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInf
         videoView = findViewById(R.id.video_view);
         recyclerView = findViewById(R.id.recycler_view);
         progressBar = findViewById(R.id.progress_bar);
+        prevImageLL = findViewById(R.id.prev_image_linear_layout);
+        nextImageLL = findViewById(R.id.next_image_linear_layout);
+        prevImageLL.setOnClickListener(this);
+        nextImageLL.setOnClickListener(this);
     }
 
     /**
@@ -84,8 +91,8 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInf
         linearLayoutManager = new LinearLayoutManager(this,
                 LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        imagesRecyclerAdapter = new ImagesRecyclerAdapter(mainPresenter.getImageUrls(), this);
-        recyclerView.setAdapter(imagesRecyclerAdapter);
+        recyclerView.setAdapter(new ImagesRecyclerAdapter(mainPresenter.getImageUrls(), this));
+        recyclerView.scrollToPosition(Integer.MAX_VALUE/2);
     }
 
     @Override
@@ -99,5 +106,10 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInf
                 break;
         }
         return false;
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

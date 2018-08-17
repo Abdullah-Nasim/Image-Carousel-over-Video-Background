@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/recycler_view">
         <LinearLayout
+            android:id="@+id/prev_image_linear_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -34,33 +35,37 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_prev"/>
+                android:src="@drawable/ic_prev"
+                tools:ignore="ContentDescription" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorAccent"
                 android:layout_margin="5dp"
-                android:text="Prev Image"/>
+                android:text="@string/prev_image"/>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/next_image_linear_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:layout_alignParentEnd="true"
             android:background="@color/colorPrimary"
             android:orientation="horizontal"
-            android:layout_alignParentRight="true">
+            android:layout_alignParentRight="true"
+            tools:ignore="RelativeOverlap">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorAccent"
                 android:layout_margin="5dp"
-                android:text="Next Image"/>
+                android:text="@string/next_image"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_next"/>
+                android:src="@drawable/ic_next"
+                tools:ignore="ContentDescription" />
         </LinearLayout>
     </RelativeLayout>
 

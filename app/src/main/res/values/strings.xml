@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Image Carousel</string>
+    <string name="next_image">Next Image</string>
+    <string name="prev_image">Prev Image</string>
 </resources>
