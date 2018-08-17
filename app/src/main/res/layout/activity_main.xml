@@ -10,7 +10,8 @@
     <VideoView
         android:id="@+id/video_view"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"

@@ -17,10 +17,17 @@ public class MainPresenter {
 
     private int currentPlayingVideo = -1;
 
-    public MainPresenter() {
+    MainPresenter() {
         videosModel = new VideosModel();
     }
 
+    /**
+     * The following function will initialize the model calss for videos.
+     * This function will populate the model with possible video urls and shall return the expected
+     * Uri when needed.
+     *
+     * @return shall contain the expected Uri by the Main Activity.
+     */
     Uri getVideoUri(){
         videosModel.getVideoUrls().add("http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8");
         videosModel.getVideoUrls().add("http://playertest.longtailvideo.com/adaptive/wowzaid3/playlist.m3u8");
