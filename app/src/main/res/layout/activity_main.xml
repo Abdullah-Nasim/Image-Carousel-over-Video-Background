@@ -19,6 +19,51 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/recycler_view">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_alignParentStart="true"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_prev"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:layout_margin="5dp"
+                android:text="Prev Image"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_alignParentEnd="true"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:layout_margin="5dp"
+                android:text="Next Image"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_next"/>
+        </LinearLayout>
+    </RelativeLayout>
+
     <ProgressBar
         android:id="@+id/progress_bar"
         android:layout_width="wrap_content"

@@ -8,7 +8,7 @@ import com.carousel.imagecarousel.models.VideosModel;
 import java.util.ArrayList;
 
 /**
- * Created by Abdullah on 8/17/2018
+ * Created by Abdullah on 8/17/2018.
  *
  * This is a presenter class for main activity.
  * This class will be responsible for performing the logical operations of main activity.
