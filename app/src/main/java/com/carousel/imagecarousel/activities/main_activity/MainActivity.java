@@ -29,10 +29,6 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInf
 
     private RecyclerView recyclerView;
 
-    private LinearLayout prevImageLL;
-
-    private LinearLayout nextImageLL;
-
     private ProgressBar progressBar;
 
     private MainPresenter mainPresenter;
@@ -59,8 +55,8 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInf
         videoView = findViewById(R.id.video_view);
         recyclerView = findViewById(R.id.recycler_view);
         progressBar = findViewById(R.id.progress_bar);
-        prevImageLL = findViewById(R.id.prev_image_linear_layout);
-        nextImageLL = findViewById(R.id.next_image_linear_layout);
+        LinearLayout prevImageLL = findViewById(R.id.prev_image_linear_layout);
+        LinearLayout nextImageLL = findViewById(R.id.next_image_linear_layout);
         prevImageLL.setOnClickListener(this);
         nextImageLL.setOnClickListener(this);
     }
@@ -110,6 +106,11 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInf
 
     @Override
     public void onClick(View v) {
+        if(v.getId() == R.id.prev_image_linear_layout){
+            recyclerView.smoothScrollToPosition(linearLayoutManager.findFirstCompletelyVisibleItemPosition()-1);
+        }else if(v.getId() == R.id.next_image_linear_layout){
+            recyclerView.smoothScrollToPosition(linearLayoutManager.findLastCompletelyVisibleItemPosition()+1);
+        }
 
     }
 }
