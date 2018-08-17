@@ -111,6 +111,5 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInf
         }else if(v.getId() == R.id.next_image_linear_layout){
             recyclerView.smoothScrollToPosition(linearLayoutManager.findLastCompletelyVisibleItemPosition()+1);
         }
-
     }
 }
