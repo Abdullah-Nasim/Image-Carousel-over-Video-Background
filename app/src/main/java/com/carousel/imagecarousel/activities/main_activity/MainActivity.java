@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.VideoView;
 
@@ -23,7 +24,8 @@ import com.carousel.imagecarousel.adapters.ImagesRecyclerAdapter;
  * and start buffering.
  */
 
-public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInfoListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInfoListener,
+        MediaPlayer.OnCompletionListener, View.OnClickListener {
 
     private VideoView videoView;
 
@@ -68,12 +70,15 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInf
         try {
             videoView.setVideoURI(mainPresenter.getVideoUri());
             videoView.requestFocus();
+            MediaController mediaController = new MediaController(this);
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 public void onPrepared(MediaPlayer mp) {
                     progressBar.setVisibility(View.GONE);
                     mp.setVolume(0,0);
                     mp.setOnInfoListener(MainActivity.this);
+                    mp.setOnCompletionListener(MainActivity.this);
                     mp.setScreenOnWhilePlaying(true);
+                    videoView.setMediaController(new MediaController(MainActivity.this));
                     videoView.start();
                 }
             });
@@ -111,5 +116,11 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInf
         }else if(v.getId() == R.id.next_image_linear_layout){
             recyclerView.smoothScrollToPosition(linearLayoutManager.findLastCompletelyVisibleItemPosition()+1);
         }
+    }
+
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        mp.reset();
+        setupBackgroundVideo();
     }
 }

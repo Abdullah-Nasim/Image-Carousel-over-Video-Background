@@ -35,6 +35,8 @@ public class MainPresenter {
      * @return shall contain the expected Uri by the Main Activity.
      */
     Uri getVideoUri(){
+        if(currentPlayingVideo == 2)
+            currentPlayingVideo = -1;
         videosModel.getVideoUrls().add("http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8");
         videosModel.getVideoUrls().add("http://playertest.longtailvideo.com/adaptive/wowzaid3/playlist.m3u8");
         videosModel.getVideoUrls().add("http://cdn-fms.rbs.com.br/hls-vod/sample1_1500kbps.f4v.m3u8");
