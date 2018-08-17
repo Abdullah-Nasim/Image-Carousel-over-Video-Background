@@ -3,12 +3,15 @@ package com.carousel.imagecarousel.activities.main_activity;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.VideoView;
 
 import com.carousel.imagecarousel.R;
+import com.carousel.imagecarousel.adapters.ImagesRecyclerAdapter;
 
 /**
  * Created by Abdullah on 8/17/2018
@@ -23,9 +26,15 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInf
 
     private VideoView videoView;
 
+    private RecyclerView recyclerView;
+
     private ProgressBar progressBar;
 
     private MainPresenter mainPresenter;
+
+    private ImagesRecyclerAdapter imagesRecyclerAdapter;
+
+    private LinearLayoutManager linearLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInf
 
         intiViews();
         setupBackgroundVideo();
+        setUpImageCarousel();
     }
 
     /**
@@ -44,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInf
      */
     private void intiViews() {
         videoView = findViewById(R.id.video_view);
+        recyclerView = findViewById(R.id.recycler_view);
         progressBar = findViewById(R.id.progress_bar);
     }
 
@@ -67,6 +78,14 @@ public class MainActivity extends AppCompatActivity implements MediaPlayer.OnInf
             progressBar.setVisibility(View.GONE);
             e.printStackTrace();
         }
+    }
+
+    private void setUpImageCarousel() {
+        linearLayoutManager = new LinearLayoutManager(this,
+                LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        imagesRecyclerAdapter = new ImagesRecyclerAdapter(mainPresenter.getImageUrls(), this);
+        recyclerView.setAdapter(imagesRecyclerAdapter);
     }
 
     @Override
